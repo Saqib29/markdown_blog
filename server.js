@@ -2,6 +2,7 @@ const express = require('express');
 const router = require('./routes/routes');
 const mongoose = require('mongoose');
 const Article = require('./models/db');
+const methodOverride = require('method-override');
 const app = express();
 
 const PORT = process.env.PORT || 8000
@@ -11,7 +12,7 @@ app.set('view engine', 'ejs');
 
 // middlwares
 app.use(express.urlencoded({ extended: true }));
-
+app.use(methodOverride('_method'));
 
 // routes
 app.use('/articles', router);
