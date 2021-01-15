@@ -1,6 +1,7 @@
 const express = require('express'); 
 const router = require('./routes/routes');
 const mongoose = require('mongoose');
+const Article = require('./models/db');
 const app = express();
 
 const PORT = process.env.PORT || 8000
@@ -17,18 +18,10 @@ app.use('/articles', router);
 
 
 // Main route
-app.get('/', (req, res) => {
+app.get('/', async(req, res) => {
 
-    const articles = [{
-        title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test description'
-    },
-    {
-        title: 'Test Article',
-        createdAt: new Date(),
-        description: 'Test description'
-    }];
+    const articles = await Article.find().sort({ createdAt : 'desc' });
+    
 
     res.render('articles/index', { articles: articles });
 });

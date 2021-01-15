@@ -8,9 +8,11 @@ router.get('/new', (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {                                                            
-    const article = await Artticle.findOne(req.params.id);
+    let article = await Article.findById(req.params.id);
     if( article == null )  res.redirect('/');
     res.render('articles/show', { article : article });
+
+    // console.log(article);
 });
 
 router.post('/', async (req, res) => {
