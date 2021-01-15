@@ -27,7 +27,9 @@ app.get('/', async(req, res) => {
 });
 
 
-mongoose.connect('mongodb+srv://saqib:saqib-29@nodetuts.qikfw.mongodb.net/markdown-blog?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+mongoose.connect('mongodb+srv://saqib:saqib-29@nodetuts.qikfw.mongodb.net/markdown-blog?retryWrites=true&w=majority', 
+    { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true }, 
+    () => {
     console.log('db connected');
 });
 

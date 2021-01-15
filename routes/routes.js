@@ -7,8 +7,8 @@ router.get('/new', (req, res) => {
     // res.send(new Article());
 });
 
-router.get('/:id', async (req, res) => {                                                            
-    let article = await Article.findById(req.params.id);
+router.get('/:slug', async (req, res) => {                                                            
+    let article = await Article.findOne({ slug : req.params.slug });
     if( article == null )  res.redirect('/');
     res.render('articles/show', { article : article });
 
@@ -23,7 +23,7 @@ router.post('/', async (req, res) => {
     });
     try{
         article = await article.save();
-         res.redirect(`/articles/${article.id}`);
+         res.redirect(`/articles/${article.slug}`);
     }catch(e){
         console.log(e);
         res.render('articles/new', { article : article });
@@ -31,5 +31,10 @@ router.post('/', async (req, res) => {
     // console.log(req.body);
 });
 
+// delete
+router.delete('/:id', async (req, res) => {
+    await Article.findByIdAndDelete(req.params.id);
+     res.redirect('/');
+});
 
 module.exports = router;
