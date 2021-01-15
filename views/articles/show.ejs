@@ -18,7 +18,9 @@
 
         <hr>
         <div class="text-light bg-dark">
-            <%= article.description %>
+            <div class="mx-4 my-4 p-4">
+                <%- article.sanitizedHtml %>
+            </div>
         </div>
 
     </div>    
