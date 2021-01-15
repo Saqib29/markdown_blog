@@ -1,14 +1,14 @@
 <div class="form-group">
     <label for="title" class=" text-white">Title</label>
-    <input class="form-control border border-dark bg-dark" style="width: 50%" type="text" name="title" required id="title">
+    <input class="form-control border text-light border-dark bg-dark" value="<%= article.title %>" style="width: 50%" type="text" name="title" required id="title">
 </div>
 <div class="form-group">
     <label for="description" class=" text-white">Description</label>
-    <textarea name="description" id="description" class="form-control border border-dark bg-dark"></textarea>
+    <textarea name="description" id="description" class="form-control border border-dark text-light bg-dark"><%= article.description %></textarea>
 </div>
 <div class="form-group">
     <label for="markdown" class=" text-white">Markdown</label>
-    <textarea name="markdown" id="markdown" class="form-control border border-dark bg-dark" required></textarea>
+    <textarea name="markdown" id="markdown" class="form-control border border-dark bg-dark text-light" required><%= article.markdown %></textarea>
 </div>
 
 <a href="/" class="btn btn-secondary">Cancel</a>

@@ -11,6 +11,7 @@ app.set('view engine', 'ejs');
 // middlwares
 app.use(express.urlencoded({ extended: true }));
 
+
 // routes
 app.use('/articles', router);
 
@@ -32,9 +33,11 @@ app.get('/', (req, res) => {
     res.render('articles/index', { articles: articles });
 });
 
-mongoose.connect('mongodb+srv://saqib:saqib-29@nodetuts.qikfw.mongodb.net/markdown?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
+
+mongoose.connect('mongodb+srv://saqib:saqib-29@nodetuts.qikfw.mongodb.net/markdown-blog?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true }, () => {
     console.log('db connected');
 });
+
 
 app.listen(PORT, () => {
     console.log(`Server started on port ${ PORT }`);
